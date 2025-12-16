@@ -1,12 +1,13 @@
 package tokyo.dev.pendaftaranles.controller;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import tokyo.dev.pendaftaranles.dto.ApiResponse;
-import tokyo.dev.pendaftaranles.dto.DaftarLesRequest;
-import tokyo.dev.pendaftaranles.dto.PendaftaranLesResponse;
-import tokyo.dev.pendaftaranles.dto.RekapPendaftaranApiResponse;
+import tokyo.dev.pendaftaranles.dto.*;
 import tokyo.dev.pendaftaranles.service.PendaftaranLesService;
 
+@Validated
 @RestController
 @RequestMapping("/les")
 public class PendaftaranLesController {
@@ -19,14 +20,16 @@ public class PendaftaranLesController {
 
     @PostMapping("/daftar")
     public ApiResponse<PendaftaranLesResponse> daftar(
-            @RequestBody DaftarLesRequest request
+            @Valid @RequestBody DaftarLesRequest request
     ) {
         return service.daftar(request);
     }
 
     @GetMapping("/rekap")
-    public RekapPendaftaranApiResponse rekapByKelas(
-            @RequestParam String kelas
+    public ApiResponse<RekapPendaftaranData> rekapByKelas(
+            @RequestParam
+            @NotBlank(message = "kelas tidak boleh kosong")
+            String kelas
     ) {
         return service.getRekapByKelas(kelas);
     }

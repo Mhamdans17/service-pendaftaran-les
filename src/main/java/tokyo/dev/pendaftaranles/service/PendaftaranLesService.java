@@ -1,10 +1,7 @@
 package tokyo.dev.pendaftaranles.service;
 
 import org.springframework.stereotype.Service;
-import tokyo.dev.pendaftaranles.dto.ApiResponse;
-import tokyo.dev.pendaftaranles.dto.DaftarLesRequest;
-import tokyo.dev.pendaftaranles.dto.PendaftaranLesResponse;
-import tokyo.dev.pendaftaranles.dto.RekapPendaftaranApiResponse;
+import tokyo.dev.pendaftaranles.dto.*;
 import tokyo.dev.pendaftaranles.entity.PendaftaranLes;
 import tokyo.dev.pendaftaranles.repository.PendaftaranLesRepository;
 
@@ -45,7 +42,7 @@ public class PendaftaranLesService {
         );
     }
 
-    public RekapPendaftaranApiResponse getRekapByKelas(String kelas) {
+    public ApiResponse<RekapPendaftaranData> getRekapByKelas(String kelas) {
 
         List<PendaftaranLes> list = repository.findByKelas(kelas);
 
@@ -59,14 +56,18 @@ public class PendaftaranLesService {
                 .filter(p -> "BATAL".equals(p.getStatus()))
                 .count();
 
-        return new RekapPendaftaranApiResponse(
-                "SUCCESS",
-                "20002",
-                "Data Pendaftaran Les Berhasil Diambil",
+        RekapPendaftaranData data = new RekapPendaftaranData(
                 kelas,
                 totalDaftar,
                 totalAktif,
                 totalBatal
+        );
+
+        return new ApiResponse<>(
+                "SUCCESS",
+                "20002",
+                "Data Pendaftaran Les Berhasil Diambil",
+                data
         );
     }
 }
