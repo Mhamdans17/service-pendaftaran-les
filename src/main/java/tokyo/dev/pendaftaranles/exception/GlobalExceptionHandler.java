@@ -5,12 +5,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import tokyo.dev.pendaftaranles.constant.ApiConstants;
 import tokyo.dev.pendaftaranles.dto.ApiResponse;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    // BODY validation error
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiResponse> handleValidationBody(
             MethodArgumentNotValidException ex
@@ -23,15 +23,14 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity.badRequest().body(
                 new ApiResponse(
-                        "FAILED",
-                        "40001",
+                        ApiConstants.STATUS_FAILED,
+                        ApiConstants.INVALID_REQUEST_CODE_PEDAFTARAN,
                         message,
                         null
                 )
         );
     }
 
-    // PARAM validation error
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<ApiResponse> handleValidationParam(
             ConstraintViolationException ex
@@ -44,9 +43,37 @@ public class GlobalExceptionHandler {
 
         return ResponseEntity.badRequest().body(
                 new ApiResponse(
-                        "FAILED",
-                        "40001",
+                        ApiConstants.STATUS_FAILED,
+                        ApiConstants.INVALID_REQUEST_GET_DATA_CODE,
                         message,
+                        null
+                )
+        );
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ApiResponse<Void>> handleBadRequest(
+            IllegalArgumentException ex) {
+
+        return ResponseEntity.badRequest().body(
+                new ApiResponse<>(
+                        ApiConstants.STATUS_FAILED,
+                        ApiConstants.INVALID_REQUEST_CODE_PEDAFTARAN,
+                        ex.getMessage(),
+                        null
+                )
+        );
+    }
+
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ApiResponse<Void>> handleBadRequest(
+            BadRequestException ex) {
+
+        return ResponseEntity.badRequest().body(
+                new ApiResponse<>(
+                        ApiConstants.STATUS_FAILED,
+                        ApiConstants.INVALID_REQUEST_CODE_PEDAFTARAN,
+                        ex.getMessage(),
                         null
                 )
         );

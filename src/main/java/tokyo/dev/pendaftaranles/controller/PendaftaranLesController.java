@@ -4,8 +4,10 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import tokyo.dev.pendaftaranles.constant.ApiConstants;
 import tokyo.dev.pendaftaranles.dto.*;
 import tokyo.dev.pendaftaranles.service.PendaftaranLesService;
+import tokyo.dev.pendaftaranles.service.UpdateStatusSiswaService;
 
 @Validated
 @RestController
@@ -13,9 +15,12 @@ import tokyo.dev.pendaftaranles.service.PendaftaranLesService;
 public class PendaftaranLesController {
 
     private final PendaftaranLesService service;
+    private final UpdateStatusSiswaService serviceUpdateStatusSiswa;
 
-    public PendaftaranLesController(PendaftaranLesService service) {
+    public PendaftaranLesController(PendaftaranLesService service,
+                                    UpdateStatusSiswaService serviceUpdateStatusSiswa) {
         this.service = service;
+        this.serviceUpdateStatusSiswa = serviceUpdateStatusSiswa;
     }
 
     @PostMapping("/daftar")
@@ -26,11 +31,18 @@ public class PendaftaranLesController {
     }
 
     @GetMapping("/rekap")
-    public ApiResponse<RekapPendaftaranData> rekapByKelas(
+    public ApiResponse<RekapPendaftaranData> getRekapByKelas(
             @RequestParam
-            @NotBlank(message = "kelas tidak boleh kosong")
+            @NotBlank(message = ApiConstants.KELAS_NOT_NULL)
             String kelas
     ) {
         return service.getRekapByKelas(kelas);
+    }
+
+    @PostMapping("/status")
+    public ApiResponse<PendaftaranLesResponse> updateStatus(
+            @Valid @RequestBody UpdateStatusRequest request
+    ) {
+        return serviceUpdateStatusSiswa.updateStatus(request);
     }
 }
