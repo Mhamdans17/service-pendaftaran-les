@@ -44,8 +44,7 @@ Project ini dirancang dengan pendekatan **clean code**, **separation of concern*
 Pastikan tools berikut sudah terpasang:
 - Java 17 atau lebih baru
 - Maven
-- Database (MySQL / PostgreSQL)
-- Git (opsional)
+- Database (MySQL)
 
 ### Clone Repository
 ```bash
