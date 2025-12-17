@@ -37,7 +37,6 @@ Project ini dirancang dengan pendekatan **clean code**, **separation of concern*
 ### Request & Response Logging
 - Logging request & response metadata
 - Menggunakan **Correlation ID** untuk tracing
-- Tidak menyimpan body (ringan & production-ready)
 
 ## Setup Service
 ### Prasyarat
