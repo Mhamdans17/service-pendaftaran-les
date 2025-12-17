@@ -48,7 +48,7 @@ Pastikan tools berikut sudah terpasang:
 
 ### Clone Repository
 ```bash
-git clone https://github.com/username/service-pendaftaran-les.git
+https://github.com/Mhamdans17/service-pendaftaran-les.git
 cd service-pendaftaran-les
 ````
 ### Run Query & Postman Collection
