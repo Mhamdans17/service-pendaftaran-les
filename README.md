@@ -39,4 +39,21 @@ Project ini dirancang dengan pendekatan **clean code**, **separation of concern*
 - Menggunakan **Correlation ID** untuk tracing
 - Tidak menyimpan body (ringan & production-ready)
 
----
+## Setup Service
+### Prasyarat
+Pastikan tools berikut sudah terpasang:
+- Java 17 atau lebih baru
+- Maven
+- Database (MySQL / PostgreSQL)
+- Git (opsional)
+
+### Clone Repository
+```bash
+git clone https://github.com/username/service-pendaftaran-les.git
+cd service-pendaftaran-les
+````
+### Run Query & Postman Collection
+- Lokasi File
+``` bash
+src/main/java/tokyo/dev/pendaftaranles/doc
+```

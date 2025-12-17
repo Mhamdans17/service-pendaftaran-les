@@ -1,0 +1,383 @@
+{
+	"info": {
+		"_postman_id": "08c5b332-f77a-40b8-820d-b6fbc06f4ba6",
+		"name": "API SERVICE PEDAFTARAN LES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30827751"
+	},
+	"item": [
+		{
+			"name": "Pendaftaran Siswa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"namaSiswa\": \"Jaka\",\r\n  \"kelas\": \"Kelas 8\",\r\n  \"jenisLes\": \"Fisika\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/les/daftar"
+			},
+			"response": [
+				{
+					"name": "Pendaftaran Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"namaSiswa\": \"Hesti\",\r\n  \"kelas\": \"Kelas 8\",\r\n  \"jenisLes\": \"Bahasa Inggris\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/les/daftar"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "192"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 17 Dec 2025 03:31:53 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"SUCCESS\",\n    \"responseCode\": \"20000\",\n    \"responseMessage\": \"Pendaftaran Siswa Les Sukses\",\n    \"data\": {\n        \"id\": 8,\n        \"namaSiswa\": \"Hesti\",\n        \"kelas\": \"Kelas 8\",\n        \"jenisLes\": \"Bahasa Inggris\",\n        \"status\": \"DAFTAR\"\n    }\n}"
+				},
+				{
+					"name": "Pendaftaran Failed",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"namaSiswa\": \"\",\r\n  \"kelas\": \"Kelas 8\",\r\n  \"jenisLes\": \"Bahasa Inggris\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/les/daftar"
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "103"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 17 Dec 2025 03:32:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"FAILED\",\n    \"responseCode\": \"40001\",\n    \"responseMessage\": \"namaSiswa tidak boleh kosong\",\n    \"data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Status Siswa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 8,\r\n  \"namaSiswa\": \"Hesti\",\r\n  \"kelas\": \"Kelas 8\",\r\n  \"status\": \"AKTIF\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/les/status"
+			},
+			"response": [
+				{
+					"name": "Update Status Siswa Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 7,\r\n  \"namaSiswa\": \"Adi\",\r\n  \"kelas\": \"Kelas 8\",\r\n  \"status\": \"AKTIF\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/les/status"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "181"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 17 Dec 2025 03:35:33 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"SUCCESS\",\n    \"responseCode\": \"20000\",\n    \"responseMessage\": \"Status siswa berhasil diubah\",\n    \"data\": {\n        \"id\": 7,\n        \"namaSiswa\": \"Adi\",\n        \"kelas\": \"Kelas 8\",\n        \"jenisLes\": \"Gambar\",\n        \"status\": \"AKTIF\"\n    }\n}"
+				},
+				{
+					"name": "Update Status Siswa Failed",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 7,\r\n  \"namaSiswa\": \"Adi\",\r\n  \"kelas\": \"Kelas 8\",\r\n  \"status\": \"AKTIF\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/les/status"
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "111"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 17 Dec 2025 03:35:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"FAILED\",\n    \"responseCode\": \"40001\",\n    \"responseMessage\": \"Status hanya bisa diubah dari DAFTAR\",\n    \"data\": null\n}"
+				},
+				{
+					"name": "Update Status Siswa Failes Id Not Found",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 7,\r\n  \"namaSiswa\": \"Hesti\",\r\n  \"kelas\": \"Kelas 8\",\r\n  \"status\": \"AKTIF\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/les/status"
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "108"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 17 Dec 2025 03:36:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"FAILED\",\n    \"responseCode\": \"40001\",\n    \"responseMessage\": \"Data siswa tidak sesuai dengan ID\",\n    \"data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Rekap Kelas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/les/rekap?kelas=Kelas 9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"les",
+						"rekap"
+					],
+					"query": [
+						{
+							"key": "kelas",
+							"value": "Kelas 9"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Rekap Data Kelas Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/les/rekap?kelas=Kelas 8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"les",
+								"rekap"
+							],
+							"query": [
+								{
+									"key": "kelas",
+									"value": "Kelas 8"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "162"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 17 Dec 2025 03:36:25 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"SUCCESS\",\n    \"responseCode\": \"20000\",\n    \"responseMessage\": \"Get Data Les Siswa Sukses\",\n    \"data\": {\n        \"kelas\": \"Kelas 8\",\n        \"totalDaftar\": 6,\n        \"totalAktif\": 3,\n        \"totalBatal\": 0\n    }\n}"
+				},
+				{
+					"name": "Rekap Data Kelas Failed",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/les/rekap?kelas=Kelas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"les",
+								"rekap"
+							],
+							"query": [
+								{
+									"key": "kelas",
+									"value": "Kelas"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "96"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 17 Dec 2025 03:37:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"FAILED\",\n    \"responseCode\": \"40001\",\n    \"responseMessage\": \"Kelas tidak terdaftar\",\n    \"data\": null\n}"
+				}
+			]
+		}
+	]
+}
